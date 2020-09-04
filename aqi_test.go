@@ -23,6 +23,40 @@ func TestPM25(t *testing.T) {
 	if !cmp.Equal(result.AQI, 81.073, floatComparer) {
 		t.Errorf("expected AQI of 81.073, got %.3f", result.AQI)
 	}
+
+	if !cmp.Equal(result.Index, Moderate) {
+		t.Errorf("expected Moderate{}, got %v", result.Index)
+	}
+}
+
+func TestPM10(t *testing.T) {
+	result, err := Calculate(PM10{160})
+	if err != nil {
+		t.Errorf("got unexpected error: %s", err)
+	}
+
+	if !cmp.Equal(result.AQI, 103.474, floatComparer) {
+		t.Errorf("expected AQI of 103.474, got %.3f", result.AQI)
+	}
+
+	if !cmp.Equal(result.Index, Sensitive) {
+		t.Errorf("expected Sensitive{}, got %v", result.Index)
+	}
+}
+
+func TestCO(t *testing.T) {
+	result, err := Calculate(CO{31})
+	if err != nil {
+		t.Errorf("got unexpected error: %s", err)
+	}
+
+	if !cmp.Equal(result.AQI, 306.0, floatComparer) {
+		t.Errorf("expected AQI of 306.0, got %.3f", result.AQI)
+	}
+
+	if !cmp.Equal(result.Index, Hazardous) {
+		t.Errorf("expected Hazardous{}, got %v", result.Index)
+	}
 }
 
 func TestPM25Extreme(t *testing.T) {
