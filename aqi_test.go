@@ -74,6 +74,21 @@ func TestSO2(t *testing.T) {
 	}
 }
 
+func TestNO2(t *testing.T) {
+	result, err := Calculate(NO2{20.0})
+	if err != nil {
+		t.Errorf("got unexpected error: %s", err)
+	}
+
+	if !cmp.Equal(result.AQI, 18.868, floatComparer) {
+		t.Errorf("expected AQI of 18.868, got %.3f", result.AQI)
+	}
+
+	if !cmp.Equal(result.Index, Good) {
+		t.Errorf("expected Good{}, got %v", result.Index)
+	}
+}
+
 func TestPM25Extreme(t *testing.T) {
 	result, err := Calculate(PM25{500.0})
 	if err != nil {
