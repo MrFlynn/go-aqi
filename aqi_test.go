@@ -31,7 +31,7 @@ func TestPM25Extreme(t *testing.T) {
 		t.Errorf("got unexpected error: %s", err)
 	}
 
-	if !cmp.Equal(result.AQI, 499.681, floatComparer) {
+	if !cmp.Equal(result.AQI, 499.736, floatComparer) {
 		t.Errorf("expected AQI for 499.736, got %.3f", result.AQI)
 	}
 }

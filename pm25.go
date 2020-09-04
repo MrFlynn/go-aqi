@@ -12,7 +12,9 @@ const (
 	pm25VeryUnhealthyBreakpointLow  = 150.5
 	pm25VeryUnhealthyBreakpointHigh = 250.4
 	pm25HazardousBreakpointLow      = 250.5
-	pm25HazardousBreakpointHigh     = 500.4
+	pm25HazardousBreakpointHigh     = 350.4
+	pm25VeryHazardousBreakpointLow  = 350.5
+	pm25VeryHazardousBreakpointHigh = 500.4
 )
 
 type PM25 struct {
@@ -31,8 +33,10 @@ func (p PM25) findRangeAndCategory() (float64, float64, category) {
 		return pm25UnhealthyBreakpointLow, pm25UnhealthyBreakpointHigh, categoryUnhealthy
 	} else if c >= pm25VeryUnhealthyBreakpointLow && c <= pm25VeryUnhealthyBreakpointHigh {
 		return pm25VeryUnhealthyBreakpointLow, pm25VeryUnhealthyBreakpointHigh, categoryVeryUnhealthy
-	} else {
+	} else if c >= pm25HazardousBreakpointLow && c <= pm25HazardousBreakpointHigh {
 		return pm25HazardousBreakpointLow, pm25HazardousBreakpointHigh, categoryHazardous
+	} else {
+		return pm25VeryHazardousBreakpointLow, pm25VeryHazardousBreakpointHigh, categoryVeryHazardous
 	}
 }
 

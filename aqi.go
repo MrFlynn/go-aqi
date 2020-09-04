@@ -5,8 +5,6 @@ import (
 	"image/color"
 )
 
-const maxInt = int(^uint(0) >> 1) // golang doesn't have a generic `MaxInt` so this is the best we have.
-
 const (
 	goodBreakpointLow           = 0
 	goodBreakpointHigh          = 50
@@ -19,7 +17,9 @@ const (
 	veryUnhealthyBreakpointLow  = 201
 	veryUnhealthyBreakpointHigh = 300
 	hazardousBreakpointLow      = 301
-	hazardousBreakpointHigh     = 500
+	hazardousBreakpointHigh     = 400
+	veryHazardousBreakpointLow  = 401
+	veryHazardousBreakpointHigh = 500
 )
 
 type category int8
@@ -31,6 +31,7 @@ const (
 	categoryUnhealthy
 	categoryVeryUnhealthy
 	categoryHazardous
+	categoryVeryHazardous
 )
 
 // Index represents the different levels of AQI (i.e good, moderate, etc.) with associated
@@ -80,6 +81,12 @@ var (
 		Low:   hazardousBreakpointLow,
 		High:  hazardousBreakpointHigh,
 	}
+	VeryHazardous = Index{
+		Name:  "Hazardous",
+		Color: color.RGBA{125, 0, 35, 255},
+		Low:   veryHazardousBreakpointLow,
+		High:  veryHazardousBreakpointHigh,
+	}
 )
 
 // Measurement type are the functions require to calculate the AQI value.
@@ -109,6 +116,8 @@ func indexFromCategory(c category) (Index, error) {
 		return VeryUnhealthy, nil
 	case categoryHazardous:
 		return Hazardous, nil
+	case categoryVeryHazardous:
+		return VeryHazardous, nil
 	default:
 		return Index{}, fmt.Errorf("could not find index for category %v", c)
 	}
