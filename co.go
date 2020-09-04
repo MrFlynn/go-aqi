@@ -40,16 +40,16 @@ func (c CO) findRangeAndCategory() (float64, float64, category) {
 	}
 }
 
-func (c CO) Range() (float64, float64) {
+func (c CO) indexes() (float64, float64) {
 	cLow, cHigh, _ := c.findRangeAndCategory()
 	return cLow, cHigh
 }
 
-func (c CO) Category() category {
+func (c CO) category() category {
 	_, _, category := c.findRangeAndCategory()
 	return category
 }
 
-func (c CO) Value() float64 {
+func (c CO) value() float64 {
 	return c.Concentration
 }

@@ -91,9 +91,9 @@ var (
 
 // Measurement type are the functions require to calculate the AQI value.
 type Measurement interface {
-	Range() (float64, float64)
-	Category() category
-	Value() float64
+	indexes() (float64, float64)
+	category() category
+	value() float64
 }
 
 // Result contains the AQI one of the predefined Index values.
@@ -123,23 +123,23 @@ func indexFromCategory(c category) (Index, error) {
 	}
 }
 
-// Calculate determines the AQI from the given measurements. The largest value is always selected.
+// Calculate determines the AQI from the given measurements. The largest AQI value is always returned.
 func Calculate(ms ...Measurement) (Result, error) {
 	var value float64
 	var index Index
 
 	for _, m := range ms {
-		if m.Value() < 0.0 {
+		if m.value() < 0.0 {
 			return Result{}, fmt.Errorf("measurement for %T cannot be less than 0", m)
 		}
 
-		tmpIndex, err := indexFromCategory(m.Category())
+		tmpIndex, err := indexFromCategory(m.category())
 		if err != nil {
 			return Result{}, err
 		}
 
-		cLow, cHigh := m.Range()
-		tmpValue := ((float64(tmpIndex.High)-float64(tmpIndex.Low))/(cHigh-cLow))*(m.Value()-cLow) + float64(tmpIndex.Low)
+		cLow, cHigh := m.indexes()
+		tmpValue := ((float64(tmpIndex.High)-float64(tmpIndex.Low))/(cHigh-cLow))*(m.value()-cLow) + float64(tmpIndex.Low)
 
 		if tmpValue > value {
 			value = tmpValue

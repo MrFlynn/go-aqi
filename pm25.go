@@ -40,16 +40,16 @@ func (p PM25) findRangeAndCategory() (float64, float64, category) {
 	}
 }
 
-func (p PM25) Range() (float64, float64) {
+func (p PM25) indexes() (float64, float64) {
 	cLow, cHigh, _ := p.findRangeAndCategory()
 	return cLow, cHigh
 }
 
-func (p PM25) Category() category {
+func (p PM25) category() category {
 	_, _, category := p.findRangeAndCategory()
 	return category
 }
 
-func (p PM25) Value() float64 {
+func (p PM25) value() float64 {
 	return p.Concentration
 }

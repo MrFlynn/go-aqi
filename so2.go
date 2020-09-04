@@ -43,16 +43,16 @@ func (s SO2) findRangeAndCategory() (float64, float64, category) {
 	}
 }
 
-func (s SO2) Range() (float64, float64) {
+func (s SO2) indexes() (float64, float64) {
 	cLow, cHigh, _ := s.findRangeAndCategory()
 	return cLow, cHigh
 }
 
-func (s SO2) Category() category {
+func (s SO2) category() category {
 	_, _, category := s.findRangeAndCategory()
 	return category
 }
 
-func (s SO2) Value() float64 {
+func (s SO2) value() float64 {
 	return s.Concentration
 }

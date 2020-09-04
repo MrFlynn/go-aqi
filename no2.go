@@ -43,16 +43,16 @@ func (n NO2) findRangeAndCategory() (float64, float64, category) {
 	}
 }
 
-func (n NO2) Range() (float64, float64) {
+func (n NO2) indexes() (float64, float64) {
 	cLow, cHigh, _ := n.findRangeAndCategory()
 	return cLow, cHigh
 }
 
-func (n NO2) Category() category {
+func (n NO2) category() category {
 	_, _, category := n.findRangeAndCategory()
 	return category
 }
 
-func (n NO2) Value() float64 {
+func (n NO2) value() float64 {
 	return n.Concentration
 }
