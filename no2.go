@@ -25,7 +25,7 @@ type NO2 struct {
 }
 
 func (n NO2) findRangeAndCategory() (float64, float64, category) {
-	c := math.Floor(n.Concentration)
+	c := math.Round(n.Concentration)
 	if c >= no2GoodBreakpointLow && c <= no2GoodBreakpointHigh {
 		return no2GoodBreakpointLow, no2GoodBreakpointHigh, categoryGood
 	} else if c >= no2ModerateBreakpointLow && c <= no2ModerateBreakpointHigh {

@@ -25,7 +25,7 @@ type SO2 struct {
 }
 
 func (s SO2) findRangeAndCategory() (float64, float64, category) {
-	c := math.Floor(s.Concentration)
+	c := math.Round(s.Concentration)
 	if c >= so2GoodBreakpointLow && c <= so2GoodBreakpointHigh {
 		return so2GoodBreakpointLow, so2GoodBreakpointHigh, categoryGood
 	} else if c >= so2ModerateBreakpointLow && c <= so2ModerateBreakpointHigh {

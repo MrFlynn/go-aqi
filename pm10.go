@@ -1,5 +1,7 @@
 package aqi
 
+import "math"
+
 const (
 	pm10GoodBreakpointLow           = 0.0
 	pm10GoodBreakpointHigh          = 54.0
@@ -23,7 +25,7 @@ type PM10 struct {
 }
 
 func (p PM10) findRangeAndCategory() (float64, float64, category) {
-	c := p.Concentration
+	c := math.Round(p.Concentration)
 	if c >= pm10GoodBreakpointLow && c <= pm10GoodBreakpointHigh {
 		return pm10GoodBreakpointLow, pm10GoodBreakpointHigh, categoryGood
 	} else if c >= pm10ModerateBreakpointLow && c <= pm10ModerateBreakpointHigh {
