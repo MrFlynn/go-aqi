@@ -1,4 +1,4 @@
-# go-aqi ![tests](https://github.com/MrFlynn/go-aqi/workflows/Tests/badge.svg)
+# go-aqi ![tests](https://github.com/MrFlynn/go-aqi/workflows/Tests/badge.svg) [![godev](https://img.shields.io/badge/godev-reference-00add8)](https://pkg.go.dev/github.com/mrflynn/go-aqi)
 Calculate the air quality index (AQI) from different particulate concentrations.
 The method for calculating AQI is based on the Environmental Protection Agency's
 (United States) [table method](https://en.wikipedia.org/wiki/Air_quality_index#United_States) 
@@ -22,6 +22,10 @@ ozone is slightly more complicated compared to the other particulate measures.
 ```
 go get -u github.com/mrflynn/go-aqi
 ```
+
+## Documentation
+
+Documentation for this library can be found [here](https://pkg.go.dev/github.com/mrflynn/go-aqi).
 
 ## Example
 Here is an example for calculating AQI from multiple particulate measurements.
