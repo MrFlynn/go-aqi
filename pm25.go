@@ -1,5 +1,7 @@
 package aqi
 
+import "github.com/shopspring/decimal"
+
 const (
 	pm25GoodBreakpointLow           = 0.0
 	pm25GoodBreakpointHigh          = 12.0
@@ -17,13 +19,13 @@ const (
 	pm25VeryHazardousBreakpointHigh = 500.4
 )
 
-// PM25 contains concentration measurements for PM2.5  in micrograms per meter cubed.
+// PM25 contains concentration measurements for PM2.5 particulates in air in micrograms per meter cubed.
 type PM25 struct {
 	Concentration float64
 }
 
 func (p PM25) findRangeAndCategory() (float64, float64, category) {
-	c := p.Concentration
+	c, _ := decimal.NewFromFloat(p.Concentration).Round(1).Float64()
 	if c >= pm25GoodBreakpointLow && c <= pm25GoodBreakpointHigh {
 		return pm25GoodBreakpointLow, pm25GoodBreakpointHigh, categoryGood
 	} else if c >= pm25ModerateBreakpointLow && c <= pm25ModerateBreakpointHigh {

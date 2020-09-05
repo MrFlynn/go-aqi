@@ -1,5 +1,7 @@
 package aqi
 
+import "github.com/shopspring/decimal"
+
 const (
 	coGoodBreakpointLow           = 0.0
 	coGoodBreakpointHigh          = 4.4
@@ -23,7 +25,7 @@ type CO struct {
 }
 
 func (c CO) findRangeAndCategory() (float64, float64, category) {
-	v := c.Concentration
+	v, _ := decimal.NewFromFloat(c.Concentration).Round(1).Float64()
 	if v >= coGoodBreakpointLow && v <= coGoodBreakpointHigh {
 		return coGoodBreakpointLow, coGoodBreakpointHigh, categoryGood
 	} else if v >= coModerateBreakpointLow && v <= coModerateBreakpointHigh {
