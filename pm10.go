@@ -17,6 +17,7 @@ const (
 	pm10VeryHazardousBreakpointHigh = 604.0
 )
 
+// PM10 contains concentration measurements for PM10 particulates in air in micrograms per meter cubed.
 type PM10 struct {
 	Concentration float64
 }

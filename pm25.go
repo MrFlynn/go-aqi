@@ -17,6 +17,7 @@ const (
 	pm25VeryHazardousBreakpointHigh = 500.4
 )
 
+// PM25 contains concentration measurements for PM2.5  in micrograms per meter cubed.
 type PM25 struct {
 	Concentration float64
 }

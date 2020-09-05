@@ -43,7 +43,7 @@ type Index struct {
 	High  int
 }
 
-// Default initializations for all EPA AQI values with their associate metadata.
+// Default indices for all EPA AQI levels, each containing their level's respective metadata.
 var (
 	Good = Index{
 		Name:  "Good",

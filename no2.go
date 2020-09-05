@@ -19,7 +19,7 @@ const (
 	no2VeryHazardousBreakpointHigh = 2049.0
 )
 
-// NO2 is a container for holding N02 measurements in PPB.
+// NO2 contains concentration measurements for nitrogen dioxide in air in parts per billion.
 type NO2 struct {
 	Concentration float64
 }

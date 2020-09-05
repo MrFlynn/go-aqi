@@ -17,6 +17,7 @@ const (
 	coVeryHazardousBreakpointHigh = 50.4
 )
 
+// CO contains concentration measurements for carbon monoxide in air in parts per million.
 type CO struct {
 	Concentration float64
 }

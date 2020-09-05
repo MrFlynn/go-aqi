@@ -19,7 +19,7 @@ const (
 	so2VeryHazardousBreakpointHigh = 1004.0
 )
 
-// SO2 is a container for holding S02 measurements in PPB.
+// SO2 ontains concentration measurements for sulfur dioxide measurements in air in parts per billion.
 type SO2 struct {
 	Concentration float64
 }
