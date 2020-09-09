@@ -42,15 +42,11 @@ import (
 func main() {
 	results, err := aqi.Calculate(aqi.PM25{20.2}, aqi.CO{4.1}, aqi.NO2{67.6})
 	if err != nil {
-		fmt.Prinln(err)
+		fmt.Println(err)
 		return
 	}
 
-	fmt.Printf(
-		"The air quality is %s with an AQI of %.3f\n",
-		results.Index.Name,
-		results.AQI,
-	)
+	fmt.Printf("The air quality is %s with an AQI of %.3f\n", results.Index.Name, results.AQI)
 }
 ```
 
